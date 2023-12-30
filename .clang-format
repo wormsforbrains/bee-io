@@ -1,0 +1,36 @@
+---
+# This section contains all options we want to apply to all languages.
+BasedOnStyle: LLVM
+---
+# This section contains all options we want to apply to C++.
+Language: Cpp
+
+AccessModifierOffset: 0 # Don't indent access modifiers relative to the current indentation.
+AlignAfterOpenBracket: DontAlign # Align after open bracket.
+AlignArrayOfStructures: Right # Horizontally align array of structures.
+AlignEscapedNewlines: Left # Horizontally align escaped newlines as far left as possible.
+AlignOperands: AlignAfterOperator # Horizontally align operands of binary and ternary expressions.
+AllowAllArgumentsOnNextLine: true # Allow all arguments to be on the next line.
+AlwaysBreakTemplateDeclarations: Yes # Always break after template declarations.
+BraceWrapping:
+  SplitEmptyFunction: false # Don't split an empty function's braces.
+  SplitEmptyRecord: false # Don't split an empty record's braces.
+  SplitEmptyNamespace: false # Don't split an empty namespace's braces.
+BinPackArguments: false # Don't pack function arguments.
+BreakBeforeBinaryOperators: All # Break before all binary operators.
+BreakBeforeBraces: Attach # Don't break before braces.
+BreakConstructorInitializers: AfterColon # Break after colon in constructor initializers.
+BreakInheritanceList: AfterComma # Break after comma in inheritance list.
+ColumnLimit: 0 # Don't limit line length.
+Cpp11BracedListStyle: false # Put closing brace on a new line.
+EmptyLineBeforeAccessModifier: Always # Always put an empty line before access modifiers.
+IncludeBlocks: Regroup # Merge all #include blocks into a single block, sort, then split into multiple blocks by category.
+IndentAccessModifiers: true # Indent code within an access modifier's scope.
+IndentCaseLabels: true # Indent case labels within a switch statement.
+IndentRequiresClause: false # Don't indent requires clauses.
+IndentWidth: 2 # Use 'IndentWidth' tabs for indentation.
+NamespaceIndentation: All # Indent all namespaces.
+PointerAlignment: Left # Attach '*' to the type.
+TabWidth: 2 # Use 'TabWidth' spaces for tabs.
+UseTab: Never # Use 'TabWidth' spaces for indentation.
+---
