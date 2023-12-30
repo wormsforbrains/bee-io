@@ -12,37 +12,7 @@ IHDRChunk::IHDRChunk(uint32_t width, uint32_t height, uint8_t bit_depth, uint8_t
     _width(width), _height(height), _bit_depth(bit_depth), _color_type(color_type),
     _compression_method(compression_method), _filter_method(filter_method), _interlace_method(interlace_method) {
   _length = 13;
-  _validate(ENCODING);
-}
-
-IHDRChunk::IHDRChunk(std::ifstream& stream) :
-    Chunk(0x49484452) {
-  // Read the width
-  _width = (stream.get() << 24) | (stream.get() << 16) | (stream.get() << 8) | stream.get();
-
-  // Read the height
-  _height = (stream.get() << 24) | (stream.get() << 16) | (stream.get() << 8) | stream.get();
-
-  // Read the bit depth
-  _bit_depth = stream.get();
-
-  // Read the color type
-  _color_type = stream.get();
-
-  // Read the compression method
-  _compression_method = stream.get();
-
-  // Read the filter method
-  _filter_method = stream.get();
-
-  // Read the interlace method
-  _interlace_method = stream.get();
-
-  // Read the CRC
-  _crc = (stream.get() << 24) | (stream.get() << 16) | (stream.get() << 8) | stream.get();
-
-  // Validate the chunk
-  _validate(DECODING);
+  _validate();
 }
 
 uint32_t IHDRChunk::width() const { return _width; }
@@ -53,7 +23,7 @@ uint8_t IHDRChunk::compression_method() const { return _compression_method; }
 uint8_t IHDRChunk::filter_method() const { return _filter_method; }
 uint8_t IHDRChunk::interlace_method() const { return _interlace_method; }
 
-void IHDRChunk::_validate(ConstructorType type) {
+void IHDRChunk::_validate() {
   std::string errors;
 
   // Check the length
@@ -117,11 +87,7 @@ void IHDRChunk::_validate(ConstructorType type) {
   }
 
   // Initialize the chunk
-  if (type == ENCODING) {
-    encoding_init();
-  } else {
-    decoding_init();
-  }
+  encoding_init();
 }
 
 void IHDRChunk::encoding_init() {
@@ -167,8 +133,4 @@ void IHDRChunk::encoding_init() {
 
   // Calculate the CRC
   _crc = CRC32::crc(type_and_data, 17);
-}
-
-void IHDRChunk::decoding_init() {
-  // Nothing to do here
 }

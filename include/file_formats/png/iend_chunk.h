@@ -15,7 +15,6 @@ class IENDChunk : public Chunk {
     IENDChunk();
 
     void encoding_init() override;
-    void decoding_init() override;
 };
 
 #endif // PNG_IO_IEND_CHUNK_H

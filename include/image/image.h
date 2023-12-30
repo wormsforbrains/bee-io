@@ -28,8 +28,6 @@ class Image {
     static Image create(int width, int height, int channels, uint8_t* data);
     static Image create(int width, int height, int channels, std::initializer_list<uint8_t> fill);
 
-    static Image open(const char* filename);
-
     [[nodiscard]] int width() const;
     [[nodiscard]] int height() const;
     [[nodiscard]] int channels() const;

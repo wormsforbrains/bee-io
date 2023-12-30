@@ -19,27 +19,23 @@ class IHDRChunk : public Chunk {
     uint8_t _filter_method;
     uint8_t _interlace_method;
 
-    void _validate(ConstructorType type);
+    void _validate();
 
   public:
     // Encoding constructor
     IHDRChunk(uint32_t width, uint32_t height, uint8_t bit_depth, uint8_t color_type, uint8_t compression_method,
         uint8_t filter_method, uint8_t interlace_method);
 
-    // Decoding constructor
-    explicit IHDRChunk(std::ifstream& stream);
-
     // Getters
-    uint32_t width() const;
-    uint32_t height() const;
-    uint8_t bit_depth() const;
-    uint8_t color_type() const;
-    uint8_t compression_method() const;
-    uint8_t filter_method() const;
-    uint8_t interlace_method() const;
+    [[nodiscard]] uint32_t width() const;
+    [[nodiscard]] uint32_t height() const;
+    [[nodiscard]] uint8_t bit_depth() const;
+    [[nodiscard]] uint8_t color_type() const;
+    [[nodiscard]] uint8_t compression_method() const;
+    [[nodiscard]] uint8_t filter_method() const;
+    [[nodiscard]] uint8_t interlace_method() const;
 
     void encoding_init() override;
-    void decoding_init() override;
 };
 
 #endif // PNG_IO_IHDR_CHUNK_H

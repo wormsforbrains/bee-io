@@ -22,7 +22,3 @@ void IENDChunk::encoding_init() {
   type[3] = _type & 0xff;
   _crc = CRC32::crc(type, 4);
 }
-
-void IENDChunk::decoding_init() {
-  // Nothing to do here
-}

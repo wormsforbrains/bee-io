@@ -7,8 +7,8 @@
 
 #include <chrono>
 #include <cmath>
-#include <iostream>
 #include <functional>
+#include <iostream>
 
 struct Utils {
     struct TimeitResult {
@@ -35,10 +35,10 @@ struct Utils {
         double confidence_lower_bound() const;
         double confidence_upper_bound() const;
 
-        friend std::ostream &operator<<(std::ostream &os, const TimeitResult &result);
+        friend std::ostream& operator<<(std::ostream& os, const TimeitResult& result);
     };
 
-    static TimeitResult timeit(std::function<void()> &func, size_t loops = 0, size_t runs = 7);
+    static TimeitResult timeit(std::function<void()>& func, size_t loops = 0, size_t runs = 7);
 };
 
 #endif // PNG_IO_UTILS_H

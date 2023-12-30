@@ -19,17 +19,13 @@ class IDATChunk : public Chunk {
     Bytef *_compressed_data;
     uLongf _compressed_data_length;
 
-    void _init(ConstructorType type);
+    void _init();
 
   public:
     // Encoding constructor
     IDATChunk(uint32_t length, uint8_t *data);
 
-    // Decoding constructor
-    explicit IDATChunk(std::ifstream &stream);
-
     void encoding_init() override;
-    void decoding_init() override;
 };
 
 #endif // PNG_IO_IDAT_CHUNK_H

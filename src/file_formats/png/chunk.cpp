@@ -10,9 +10,6 @@
 Chunk::Chunk(uint32_t type) :
     _length(0), _type(type), _data(nullptr), _crc(0xffffffffL) {}
 
-Chunk::Chunk(std::ifstream& stream) :
-    _length(0), _type(0), _data(nullptr), _crc(0xffffffffL) {}
-
 // Destructor
 Chunk::~Chunk() {
   delete[] _data;

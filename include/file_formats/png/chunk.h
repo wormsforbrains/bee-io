@@ -8,11 +8,6 @@
 #include <cstdint>
 #include <fstream>
 
-enum ConstructorType {
-  ENCODING,
-  DECODING
-};
-
 class Chunk {
   protected:
     uint32_t _length;
@@ -23,9 +18,6 @@ class Chunk {
   public:
     // Encoding constructor
     explicit Chunk(uint32_t type);
-
-    // Decoding constructor
-    explicit Chunk(std::ifstream& stream);
 
     ~Chunk();
 
@@ -40,7 +32,6 @@ class Chunk {
     void crc(uint32_t crc);
 
     virtual void encoding_init() = 0;
-    virtual void decoding_init() = 0;
 
     void write(std::ofstream& stream);
 };

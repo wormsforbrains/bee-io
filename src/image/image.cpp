@@ -70,42 +70,6 @@ Image Image::create(int width, int height, int channels, std::initializer_list<u
   return { width, height, channels, data };
 }
 
-Image Image::open(const char *filename) {
-  throw std::uni
-
-  // Open the file
-  std::ifstream file(filename, std::ios::binary);
-
-  // Check if the file is open
-  if (!file.is_open()) {
-    throw std::invalid_argument("File could not be opened");
-  }
-
-  // Check if the file is a PNG
-  if (!PNG::is_png(file)) {
-    throw std::invalid_argument("File is not a PNG");
-  }
-
-  // Read the IHDR chunk
-  IHDRChunk ihdr_chunk(file);
-
-  // Read IDAT chunks until the IEND chunk is reached
-  std::vector<IDATChunk> idat_chunks;
-  while (true) {
-    try {
-      idat_chunks.emplace_back(file);
-    } catch (std::runtime_error& e) {
-      break;
-    }
-  }
-
-  // The only chunk left should be the IEND chunk, which we don't care about
-  file.close();
-
-  // Unfilter the data
-
-}
-
 // Accessors
 int Image::width() const { return _width; }
 int Image::height() const { return _height; }
