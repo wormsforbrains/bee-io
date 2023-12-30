@@ -1,3 +1,6 @@
-# Build directories
+# Ignore the .idea directory
+/.idea/
+
+# Ignore cmake build directories
 /cmake-build-debug/
 /cmake-build-release/
